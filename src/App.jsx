@@ -6,6 +6,7 @@ import Loader from './components/common/Loader'
 // Pages
 import LoginPage      from './pages/auth/LoginPage'
 import RegisterPage   from './pages/auth/RegisterPage'
+import HomePage       from './pages/HomePage'
 import MarketplacePage from './pages/MarketplacePage'
 import CartPage       from './pages/CartPage'
 import OrdersPage     from './pages/OrdersPage'
@@ -37,44 +38,46 @@ export default function App() {
       <Route path="/login"    element={<PublicOnly><LoginPage/></PublicOnly>}/>
       <Route path="/register" element={<PublicOnly><RegisterPage/></PublicOnly>}/>
 
-      {/* All other routes wrapped in Layout */}
-      <Route element={<Layout><Routes/></Layout>}>
-        <Route path="/" element={<Navigate to="/marketplace" replace/>}/>
+      {/* Home page (public) */}
+      <Route path="/" element={<Layout><HomePage/></Layout>}/>
 
-        <Route path="/marketplace" element={<Layout><MarketplacePage/></Layout>}/>
+      {/* Marketplace (public) */}
+      <Route path="/marketplace" element={<Layout><MarketplacePage/></Layout>}/>
 
-        <Route path="/cart"   element={
-          <PrivateRoute roles={['ROLE_USER']}>
-            <Layout><CartPage/></Layout>
-          </PrivateRoute>}/>
+      {/* User routes */}
+      <Route path="/cart" element={
+        <PrivateRoute roles={['ROLE_USER']}>
+          <Layout><CartPage/></Layout>
+        </PrivateRoute>}/>
 
-        <Route path="/orders" element={
-          <PrivateRoute roles={['ROLE_USER']}>
-            <Layout><OrdersPage/></Layout>
-          </PrivateRoute>}/>
+      <Route path="/orders" element={
+        <PrivateRoute roles={['ROLE_USER']}>
+          <Layout><OrdersPage/></Layout>
+        </PrivateRoute>}/>
 
-        <Route path="/dashboard" element={
-          <PrivateRoute roles={['ROLE_USER']}>
-            <Layout><UserDashboard/></Layout>
-          </PrivateRoute>}/>
+      <Route path="/dashboard" element={
+        <PrivateRoute roles={['ROLE_USER']}>
+          <Layout><UserDashboard/></Layout>
+        </PrivateRoute>}/>
 
-        <Route path="/seller/dashboard" element={
-          <PrivateRoute roles={['ROLE_SELLER']}>
-            <Layout><SellerDashboard/></Layout>
-          </PrivateRoute>}/>
+      {/* Seller routes */}
+      <Route path="/seller/dashboard" element={
+        <PrivateRoute roles={['ROLE_SELLER']}>
+          <Layout><SellerDashboard/></Layout>
+        </PrivateRoute>}/>
 
-        <Route path="/seller/products" element={
-          <PrivateRoute roles={['ROLE_SELLER','ROLE_ADMIN']}>
-            <Layout><ManageProducts/></Layout>
-          </PrivateRoute>}/>
+      <Route path="/seller/products" element={
+        <PrivateRoute roles={['ROLE_SELLER','ROLE_ADMIN']}>
+          <Layout><ManageProducts/></Layout>
+        </PrivateRoute>}/>
 
-        <Route path="/admin/dashboard" element={
-          <PrivateRoute roles={['ROLE_ADMIN']}>
-            <Layout><AdminDashboard/></Layout>
-          </PrivateRoute>}/>
-      </Route>
+      {/* Admin routes */}
+      <Route path="/admin/dashboard" element={
+        <PrivateRoute roles={['ROLE_ADMIN']}>
+          <Layout><AdminDashboard/></Layout>
+        </PrivateRoute>}/>
 
-      <Route path="*" element={<Navigate to="/marketplace" replace/>}/>
+      <Route path="*" element={<Navigate to="/" replace/>}/>
     </Routes>
   )
 }
