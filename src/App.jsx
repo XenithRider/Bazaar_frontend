@@ -1,83 +1,108 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
 import Layout from './components/layout/Layout'
 import Loader from './components/common/Loader'
 
 // Pages
-import LoginPage      from './pages/auth/LoginPage'
-import RegisterPage   from './pages/auth/RegisterPage'
-import HomePage       from './pages/HomePage'
+import LoginPage       from './pages/auth/LoginPage'
+import RegisterPage    from './pages/auth/RegisterPage'
+import HomePage        from './pages/HomePage'
 import MarketplacePage from './pages/MarketplacePage'
-import CartPage       from './pages/CartPage'
-import OrdersPage     from './pages/OrdersPage'
-import UserDashboard  from './pages/user/UserDashboard'
+import CartPage        from './pages/CartPage'
+import OrdersPage      from './pages/OrdersPage'
+import UserDashboard   from './pages/user/UserDashboard'
 import SellerDashboard from './pages/seller/SellerDashboard'
 import ManageProducts  from './pages/seller/ManageProducts'
 import AdminDashboard  from './pages/admin/AdminDashboard'
 
-// Route guards
-function PrivateRoute({ children, roles }) {
+// ── Guards ────────────────────────────────────────────────────────────────────
+
+function PrivateRoute({ roles }) {
   const { user, loading, role } = useAuth()
-  if (loading) return <Loader/>
-  if (!user)   return <Navigate to="/login" replace/>
-  if (roles && !roles.includes(role)) return <Navigate to="/" replace/>
-  return children
+
+  if (loading) return <Loader />
+
+  if (!user) return <Navigate to="/login" replace />
+
+  if (roles && roles.length > 0 && !roles.includes(role)) {
+    if (role === 'ROLE_ADMIN')  return <Navigate to="/admin/dashboard"  replace />
+    if (role === 'ROLE_SELLER') return <Navigate to="/seller/dashboard" replace />
+    return <Navigate to="/marketplace" replace />
+  }
+
+  return <Outlet />
 }
 
-function PublicOnly({ children }) {
-  const { user, loading } = useAuth()
-  if (loading) return <Loader/>
-  if (user)    return <Navigate to="/marketplace" replace/>
-  return children
+function PublicOnly() {
+  const { user, loading, role } = useAuth()
+  if (loading) return <Loader />
+  if (user) {
+    if (role === 'ROLE_ADMIN')  return <Navigate to="/admin/dashboard"  replace />
+    if (role === 'ROLE_SELLER') return <Navigate to="/seller/dashboard" replace />
+    return <Navigate to="/marketplace" replace />
+  }
+  return <Outlet />
 }
+
+function WithLayout() {
+  return (
+    <Layout>
+      <Outlet />
+    </Layout>
+  )
+}
+
+// ── App ───────────────────────────────────────────────────────────────────────
 
 export default function App() {
   return (
     <Routes>
-      {/* Public auth */}
-      <Route path="/login"    element={<PublicOnly><LoginPage/></PublicOnly>}/>
-      <Route path="/register" element={<PublicOnly><RegisterPage/></PublicOnly>}/>
 
-      {/* Home page (public) */}
-      <Route path="/" element={<Layout><HomePage/></Layout>}/>
+      {/* Auth pages - redirect if already logged in */}
+      <Route element={<PublicOnly />}>
+        <Route path="/login"    element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Route>
 
-      {/* Marketplace (public) */}
-      <Route path="/marketplace" element={<Layout><MarketplacePage/></Layout>}/>
+      {/* Public pages with layout */}
+      <Route element={<WithLayout />}>
+        <Route path="/"            element={<HomePage />} />
+        <Route path="/marketplace" element={<MarketplacePage />} />
+      </Route>
 
-      {/* User routes */}
-      <Route path="/cart" element={
-        <PrivateRoute roles={['ROLE_USER']}>
-          <Layout><CartPage/></Layout>
-        </PrivateRoute>}/>
+      {/* USER-only routes */}
+      <Route element={<PrivateRoute roles={['ROLE_USER']} />}>
+        <Route element={<WithLayout />}>
+          <Route path="/cart"      element={<CartPage />} />
+          <Route path="/orders"    element={<OrdersPage />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
+        </Route>
+      </Route>
 
-      <Route path="/orders" element={
-        <PrivateRoute roles={['ROLE_USER']}>
-          <Layout><OrdersPage/></Layout>
-        </PrivateRoute>}/>
+      {/* SELLER-only routes */}
+      <Route element={<PrivateRoute roles={['ROLE_SELLER']} />}>
+        <Route element={<WithLayout />}>
+          <Route path="/seller/dashboard" element={<SellerDashboard />} />
+        </Route>
+      </Route>
 
-      <Route path="/dashboard" element={
-        <PrivateRoute roles={['ROLE_USER']}>
-          <Layout><UserDashboard/></Layout>
-        </PrivateRoute>}/>
+      {/* SELLER + ADMIN routes */}
+      <Route element={<PrivateRoute roles={['ROLE_SELLER', 'ROLE_ADMIN']} />}>
+        <Route element={<WithLayout />}>
+          <Route path="/seller/products" element={<ManageProducts />} />
+        </Route>
+      </Route>
 
-      {/* Seller routes */}
-      <Route path="/seller/dashboard" element={
-        <PrivateRoute roles={['ROLE_SELLER']}>
-          <Layout><SellerDashboard/></Layout>
-        </PrivateRoute>}/>
+      {/* ADMIN-only routes */}
+      <Route element={<PrivateRoute roles={['ROLE_ADMIN']} />}>
+        <Route element={<WithLayout />}>
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        </Route>
+      </Route>
 
-      <Route path="/seller/products" element={
-        <PrivateRoute roles={['ROLE_SELLER','ROLE_ADMIN']}>
-          <Layout><ManageProducts/></Layout>
-        </PrivateRoute>}/>
+      {/* Catch-all */}
+      <Route path="*" element={<Navigate to="/" replace />} />
 
-      {/* Admin routes */}
-      <Route path="/admin/dashboard" element={
-        <PrivateRoute roles={['ROLE_ADMIN']}>
-          <Layout><AdminDashboard/></Layout>
-        </PrivateRoute>}/>
-
-      <Route path="*" element={<Navigate to="/" replace/>}/>
     </Routes>
   )
 }

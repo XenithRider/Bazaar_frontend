@@ -7,42 +7,42 @@ import {
 } from 'lucide-react'
 
 const stats = [
-  { label: 'Eco Products',   value: '2,400+', icon: <Package size={22} />,      color: 'text-primary' },
-  { label: 'Happy Shoppers', value: '18,000+',icon: <Users size={22} />,         color: 'text-info'    },
-  { label: 'CO₂ Saved',      value: '52 tons', icon: <TrendingDown size={22} />, color: 'text-success' },
-  { label: 'Verified Sellers',value: '340+',   icon: <Shield size={22} />,       color: 'text-accent'  },
+  { label: 'Eco Products',   value: '2,400+', icon: <Package size={20} />,      color: 'text-emerald-500' },
+  { label: 'Happy Shoppers', value: '18,000+',icon: <Users size={20} />,         color: 'text-blue-500'    },
+  { label: 'CO₂ Saved',      value: '52 tons', icon: <TrendingDown size={20} />, color: 'text-green-500' },
+  { label: 'Verified Sellers',value: '340+',   icon: <Shield size={20} />,       color: 'text-amber-500'  },
 ]
 
 const features = [
   {
-    icon: <Leaf size={28} className="text-primary" />,
+    icon: <Leaf size={28} />,
     title: 'Eco-Certified Products',
-    desc: 'Every eco product on EcoBazaar goes through a rigorous certification process before earning the green badge.',
-    bg: 'bg-primary/10',
+    desc: 'Every product goes through a rigorous certification process before earning the green badge.',
+    theme: 'text-emerald-600 bg-emerald-50 border-emerald-100',
   },
   {
-    icon: <TrendingDown size={28} className="text-success" />,
+    icon: <TrendingDown size={28} />,
     title: 'Carbon Footprint Tracker',
-    desc: 'See exactly how much CO₂ each purchase generates, and get suggestions to swap to greener alternatives.',
-    bg: 'bg-success/10',
+    desc: 'See exactly how much CO₂ each purchase generates and find greener alternatives.',
+    theme: 'text-blue-600 bg-blue-50 border-blue-100',
   },
   {
-    icon: <Recycle size={28} className="text-teal-600" />,
+    icon: <Recycle size={28} />,
     title: 'Eco Swap Suggestions',
-    desc: 'Our smart cart analyzes your items and instantly recommends lower-impact alternatives to save the planet.',
-    bg: 'bg-teal-100',
+    desc: 'Our smart cart analyzes items and recommends lower-impact alternatives instantly.',
+    theme: 'text-teal-600 bg-teal-50 border-teal-100',
   },
   {
-    icon: <Star size={28} className="text-accent" />,
+    icon: <Star size={28} />,
     title: 'Earn Eco Badges',
-    desc: 'Shop green and level up. Unlock badges like 🌱 Sprout, 🌳 Guardian, and 🌍 Planet Hero.',
-    bg: 'bg-accent/10',
+    desc: 'Shop green and level up. Unlock badges like Sprout, Guardian, and Planet Hero.',
+    theme: 'text-amber-600 bg-amber-50 border-amber-100',
   },
 ]
 
 const categories = [
-  { name: 'Organic Food',     emoji: '🥦', count: '320 products' },
-  { name: 'Natural Beauty',   emoji: '🌸', count: '215 products' },
+  { name: 'Organic Food',    emoji: '🥦', count: '320 products' },
+  { name: 'Natural Beauty',  emoji: '🌸', count: '215 products' },
   { name: 'Sustainable Home', emoji: '🏠', count: '180 products' },
   { name: 'Eco Fashion',      emoji: '👕', count: '140 products' },
   { name: 'Zero Waste',       emoji: '♻️', count: '95 products'  },
@@ -74,80 +74,78 @@ const testimonials = [
 ]
 
 const floatingIcons = [
-  { Icon: TreePine, style: 'top-16 left-[8%]', size: 20, delay: '0s' },
-  { Icon: Wind,     style: 'top-32 right-[12%]', size: 16, delay: '0.5s' },
-  { Icon: Droplets, style: 'bottom-24 left-[15%]', size: 18, delay: '1s' },
-  { Icon: Sun,      style: 'bottom-16 right-[8%]', size: 22, delay: '1.5s' },
-  { Icon: Leaf,     style: 'top-1/2 left-[4%]', size: 14, delay: '0.3s' },
-  { Icon: Sparkles, style: 'top-1/2 right-[4%]', size: 14, delay: '0.8s' },
+  { Icon: TreePine, style: 'top-16 left-[8%]', size: 24, delay: '0s' },
+  { Icon: Wind,     style: 'top-32 right-[12%]', size: 20, delay: '0.5s' },
+  { Icon: Droplets, style: 'bottom-24 left-[15%]', size: 22, delay: '1s' },
+  { Icon: Sun,      style: 'bottom-16 right-[8%]', size: 26, delay: '1.5s' },
+  { Icon: Leaf,     style: 'top-1/2 left-[4%]', size: 18, delay: '0.3s' },
+  { Icon: Sparkles, style: 'top-1/2 right-[4%]', size: 18, delay: '0.8s' },
 ]
 
 export default function HomePage() {
   const { user } = useAuth()
 
   return (
-    <div className="space-y-0 -mt-6">
+    <div className="space-y-24 pb-20 -mt-6">
 
       {/* ─── HERO ─── */}
-      <section className="relative overflow-hidden rounded-3xl mx-0 mb-16 mt-0"
-        style={{ background: 'linear-gradient(135deg, #14532d 0%, #16a34a 45%, #0d9488 100%)' }}>
+      <section className="relative overflow-hidden rounded-[2.5rem] mx-2 lg:mx-4 mt-4 shadow-2xl"
+        style={{ background: 'linear-gradient(135deg, #064e3b 0%, #059669 50%, #0d9488 100%)' }}>
 
-        {/* Decorative blobs */}
-        <div className="absolute inset-0 pointer-events-none select-none">
-          <div className="absolute w-96 h-96 rounded-full opacity-10 bg-white"
-            style={{ top: '-80px', left: '-60px', filter: 'blur(60px)' }} />
-          <div className="absolute w-72 h-72 rounded-full opacity-10 bg-yellow-300"
-            style={{ bottom: '-40px', right: '-40px', filter: 'blur(50px)' }} />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute w-[500px] h-[500px] rounded-full opacity-20 bg-emerald-300 blur-[100px] -top-48 -left-24" />
+          <div className="absolute w-[400px] h-[400px] rounded-full opacity-20 bg-yellow-200 blur-[80px] -bottom-24 -right-12" />
         </div>
 
-        {/* Floating eco icons */}
         {floatingIcons.map(({ Icon, style, size, delay }, i) => (
-          <div key={i} className={`absolute ${style} text-white/20`}
-            style={{ animation: `float 4s ease-in-out infinite`, animationDelay: delay }}>
+          <div key={i} className={`absolute ${style} text-white/10 hidden md:block`}
+            style={{ animation: `float 6s ease-in-out infinite`, animationDelay: delay }}>
             <Icon size={size} />
           </div>
         ))}
 
-        <div className="relative z-10 flex flex-col items-center text-center px-6 py-20 lg:py-28">
-          {/* Pill badge */}
-          <div className="badge badge-lg bg-white/15 text-white border-white/30 gap-2 mb-6 px-4 py-3 text-sm font-medium backdrop-blur-sm">
-            <Sparkles size={14} />
-            India's #1 Eco-Friendly Marketplace
+        <div className="relative z-10 flex flex-col items-center text-center px-6 py-24 lg:py-32">
+          <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 text-sm font-semibold tracking-wide text-emerald-100 uppercase rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+            <Sparkles size={16} className="text-yellow-300" />
+            India's Premier Eco Marketplace
           </div>
 
-          <h1 className="text-white font-extrabold leading-tight mb-4"
-            style={{ fontSize: 'clamp(2.2rem, 6vw, 4rem)', textShadow: '0 2px 20px rgba(0,0,0,0.2)' }}>
-            Shop Green.<br />
-            <span style={{ color: '#bbf7d0' }}>Live Clean.</span>
+          <h1 className="text-white font-black tracking-tight mb-6 leading-[1.1]"
+            style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)' }}>
+            Shop <span className="text-emerald-200">Green.</span><br />
+            Live <span className="bg-gradient-to-r from-emerald-200 to-teal-200 bg-clip-text text-transparent">Clean.</span>
           </h1>
 
-          <p className="text-white/80 max-w-xl text-lg leading-relaxed mb-10">
-            Discover thousands of eco-certified products. Track your carbon footprint with every purchase,
-            and make a real difference — one order at a time.
+          <p className="text-emerald-50/80 max-w-2xl text-lg md:text-xl leading-relaxed mb-12">
+            Discover thousands of eco-certified products. Track your impact 
+            with every purchase and join a community making a real difference.
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-5 justify-center w-full px-4">
             <Link to="/marketplace"
-              className="btn btn-lg gap-2 text-primary font-bold shadow-xl hover:shadow-2xl transition-all"
-              style={{ background: '#fff', border: 'none' }}>
-              <ShoppingBag size={20} /> Browse Products <ArrowRight size={16} />
+              className="group btn btn-lg h-16 px-8 bg-white hover:bg-emerald-50 text-emerald-900 border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+              <ShoppingBag size={22} className="group-hover:rotate-12 transition-transform" /> 
+              <span className="font-bold">Browse Marketplace</span> 
+              <ArrowRight size={18} className="ml-1 group-hover:translate-x-1 transition-transform" />
             </Link>
             {!user && (
               <Link to="/register"
-                className="btn btn-lg btn-outline text-white border-white/60 hover:bg-white/15 hover:border-white gap-2">
-                <Leaf size={18} /> Join for Free
+                className="btn btn-lg h-16 px-8 btn-outline text-white border-white/40 hover:bg-white/10 backdrop-blur-sm border-2">
+                <Leaf size={20} /> Join the Movement
               </Link>
             )}
           </div>
 
           {/* Floating stats bar */}
-          <div className="mt-14 w-full max-w-3xl grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="mt-20 w-full max-w-4xl grid grid-cols-2 lg:grid-cols-4 gap-4 px-2">
             {stats.map(({ label, value, icon, color }) => (
               <div key={label}
-                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-4 py-3 flex flex-col items-center gap-1">
-                <div className={`${color} bg-white/20 rounded-full p-1.5`}>{icon}</div>
-                <p className="text-white font-bold text-lg leading-none">{value}</p>
-                <p className="text-white/60 text-xs">{label}</p>
+                className="group bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-5 hover:bg-white/10 transition-colors">
+                <div className={`inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 mb-3 ${color} group-hover:scale-110 transition-transform`}>
+                  {icon}
+                </div>
+                <div className="text-white font-black text-2xl tracking-tight leading-none">{value}</div>
+                <div className="text-emerald-100/60 text-xs font-bold uppercase tracking-widest mt-2">{label}</div>
               </div>
             ))}
           </div>
@@ -155,113 +153,107 @@ export default function HomePage() {
       </section>
 
       {/* ─── CATEGORIES ─── */}
-      <section className="mb-16 px-1">
-        <div className="flex items-center justify-between mb-6">
+      <section className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
-            <h2 className="text-2xl font-bold text-base-content">Shop by Category</h2>
-            <p className="text-base-content/50 text-sm mt-1">Explore our curated eco collections</p>
+            <h2 className="text-3xl font-black text-slate-800 tracking-tight">Shop by Category</h2>
+            <div className="h-1.5 w-20 bg-emerald-500 rounded-full mt-2" />
           </div>
-          <Link to="/marketplace" className="btn btn-ghost btn-sm gap-1 text-primary">
-            View all <ChevronRight size={16} />
+          <Link to="/marketplace" className="group flex items-center gap-2 font-bold text-emerald-600 hover:text-emerald-700 transition-colors">
+            Explore All Collections <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {categories.map(({ name, emoji, count }) => (
             <Link to="/marketplace" key={name}
-              className="card bg-base-100 border border-base-200 hover:border-primary hover:shadow-md transition-all duration-200 cursor-pointer group">
-              <div className="card-body p-4 items-center text-center gap-2">
-                <span className="text-3xl group-hover:scale-110 transition-transform duration-200">{emoji}</span>
-                <p className="font-semibold text-sm leading-snug">{name}</p>
-                <p className="text-xs text-base-content/40">{count}</p>
-              </div>
+              className="group flex flex-col items-center p-8 bg-white border border-slate-100 rounded-[2rem] hover:border-emerald-200 hover:shadow-xl hover:shadow-emerald-500/5 transition-all duration-300">
+              <span className="text-5xl mb-4 group-hover:scale-125 group-hover:-rotate-12 transition-transform duration-500">{emoji}</span>
+              <p className="font-bold text-slate-800 text-center leading-tight mb-1">{name}</p>
+              <p className="text-xs font-medium text-slate-400">{count}</p>
             </Link>
           ))}
         </div>
       </section>
 
       {/* ─── FEATURES ─── */}
-      <section className="mb-16 px-1">
-        <div className="text-center mb-10">
-          <div className="badge badge-primary badge-outline mb-3 px-3 py-2 gap-1">
-            <Leaf size={13} /> Why EcoBazaar?
-          </div>
-          <h2 className="text-3xl font-bold text-base-content">Shopping with a Purpose</h2>
-          <p className="text-base-content/50 mt-2 max-w-md mx-auto">
-            We built EcoBazaar to make sustainable living effortless and rewarding for everyone.
-          </p>
+      <section className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <span className="px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold uppercase tracking-wider">
+            Our Ecosystem
+          </span>
+          <h2 className="text-4xl font-black text-slate-800 mt-4 tracking-tight">Shopping with a Purpose</h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {features.map(({ icon, title, desc, bg }) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map(({ icon, title, desc, theme }) => (
             <div key={title}
-              className="card bg-base-100 border border-base-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
-              <div className="card-body p-6 gap-4">
-                <div className={`w-14 h-14 rounded-2xl ${bg} flex items-center justify-center`}>
-                  {icon}
-                </div>
-                <h3 className="font-bold text-base">{title}</h3>
-                <p className="text-sm text-base-content/60 leading-relaxed">{desc}</p>
+              className="group relative p-8 bg-white border border-slate-100 rounded-[2.5rem] hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-300">
+              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110 group-hover:rotate-3 ${theme}`}>
+                {icon}
               </div>
+              <h3 className="font-extrabold text-xl text-slate-800 mb-3">{title}</h3>
+              <p className="text-slate-500 leading-relaxed font-medium">{desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* ─── HOW IT WORKS ─── */}
-      <section className="mb-16 bg-base-100 rounded-3xl border border-base-200 shadow-sm px-8 py-12">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold">How It Works</h2>
-          <p className="text-base-content/50 text-sm mt-2">Get started in three simple steps</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-          {/* Connector line (desktop) */}
-          <div className="hidden md:block absolute top-8 left-1/3 right-1/3 h-0.5 bg-base-200 z-0" />
-
-          {[
-            { step: '01', icon: '👤', title: 'Create Account',  desc: 'Sign up for free and set up your eco profile in minutes.' },
-            { step: '02', icon: '🛒', title: 'Shop Green',       desc: 'Browse certified eco products and add them to your cart.' },
-            { step: '03', icon: '🌍', title: 'Track Your Impact',desc: 'Watch your carbon dashboard and earn badges as you save.' },
-          ].map(({ step, icon, title, desc }) => (
-            <div key={step} className="flex flex-col items-center text-center gap-3 relative z-10">
-              <div className="w-16 h-16 rounded-2xl bg-primary text-white flex items-center justify-center text-2xl shadow-lg shadow-primary/30">
-                {icon}
-              </div>
-              <span className="text-xs font-bold text-primary tracking-widest">{step}</span>
-              <h3 className="font-bold text-lg">{title}</h3>
-              <p className="text-sm text-base-content/60 max-w-xs">{desc}</p>
+      <section className="container mx-auto px-4">
+        <div className="bg-slate-900 rounded-[3rem] p-12 lg:p-20 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-[100px]" />
+            
+            <div className="relative z-10 text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-black text-white">How It Works</h2>
+              <p className="text-slate-400 mt-4 text-lg">Start your sustainability journey in 3 steps</p>
             </div>
-          ))}
+
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24">
+              {[
+                { step: '01', icon: '👤', title: 'Create Account',  desc: 'Sign up for free and set up your eco profile in minutes.' },
+                { step: '02', icon: '🛒', title: 'Shop Green',       desc: 'Browse certified eco products and add them to your cart.' },
+                { step: '03', icon: '🌍', title: 'Track Impact',    desc: 'Watch your carbon dashboard and earn badges as you save.' },
+              ].map(({ step, icon, title, desc }, idx) => (
+                <div key={step} className="relative flex flex-col items-center text-center group">
+                  <div className="w-20 h-20 rounded-3xl bg-emerald-500 text-white flex items-center justify-center text-3xl shadow-2xl shadow-emerald-500/20 mb-8 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300">
+                    {icon}
+                  </div>
+                  <span className="absolute top-0 right-1/4 text-6xl font-black text-white/5 pointer-events-none">{step}</span>
+                  <h3 className="font-bold text-xl text-white mb-3">{title}</h3>
+                  <p className="text-slate-400 leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
         </div>
       </section>
 
       {/* ─── TESTIMONIALS ─── */}
-      <section className="mb-16 px-1">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold">What Our Community Says</h2>
-          <p className="text-base-content/50 text-sm mt-1">Real stories from real eco-warriors</p>
+      <section className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-black text-slate-800 tracking-tight">Community Voices</h2>
+          <p className="text-slate-400 mt-2 font-medium">Join 18,000+ conscious shoppers</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map(({ name, location, avatar, text, badge }) => (
-            <div key={name}
-              className="card bg-base-100 border border-base-200 shadow-sm hover:shadow-md transition-all duration-200">
-              <div className="card-body p-6 gap-4">
-                <div className="flex gap-1 text-yellow-400">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
+            <div key={name} className="flex flex-col p-8 bg-slate-50 border border-slate-100 rounded-[2.5rem] relative">
+              <div className="flex gap-1 text-amber-400 mb-6">
+                {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
+              </div>
+              <p className="text-slate-600 leading-relaxed italic mb-8 flex-grow font-medium">"{text}"</p>
+              <div className="flex items-center gap-4 border-t border-slate-200 pt-6">
+                <div className="avatar">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-bold text-lg">
+                    {avatar}
+                  </div>
                 </div>
-                <p className="text-sm text-base-content/70 leading-relaxed italic">"{text}"</p>
-                <div className="flex items-center gap-3 mt-2">
-                  <div className="avatar placeholder">
-                    <div className="bg-primary text-primary-content rounded-full w-10">
-                      <span className="font-bold">{avatar}</span>
-                    </div>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-sm">{name}</p>
-                    <p className="text-xs text-base-content/50">{location}</p>
-                  </div>
-                  <div className="ml-auto badge badge-ghost badge-sm">{badge}</div>
+                <div>
+                  <p className="font-bold text-slate-800 leading-none">{name}</p>
+                  <p className="text-xs text-slate-400 font-bold mt-1 uppercase tracking-wide">{location}</p>
+                </div>
+                <div className="ml-auto px-3 py-1 bg-white rounded-full border border-slate-200 text-[10px] font-black uppercase text-emerald-600 shadow-sm">
+                   {badge}
                 </div>
               </div>
             </div>
@@ -271,35 +263,37 @@ export default function HomePage() {
 
       {/* ─── CTA BANNER ─── */}
       {!user && (
-        <section className="mb-6 rounded-3xl overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #0d9488 0%, #16a34a 60%, #15803d 100%)' }}>
-          <div className="flex flex-col md:flex-row items-center justify-between px-10 py-12 gap-6">
-            <div className="text-white">
-              <h2 className="text-2xl md:text-3xl font-extrabold mb-2">Ready to shop sustainably?</h2>
-              <p className="text-white/75 max-w-md text-sm leading-relaxed">
-                Join 18,000+ conscious shoppers. Sign up free and start tracking your carbon impact today.
-              </p>
-            </div>
-            <div className="flex gap-3 shrink-0">
-              <Link to="/register"
-                className="btn btn-lg font-bold shadow-xl gap-2"
-                style={{ background: '#fff', color: '#15803d', border: 'none' }}>
-                <Leaf size={18} /> Get Started Free
-              </Link>
-              <Link to="/marketplace"
-                className="btn btn-lg btn-outline text-white border-white/50 hover:bg-white/15">
-                Browse First
-              </Link>
+        <section className="container mx-auto px-4">
+          <div className="relative rounded-[3rem] overflow-hidden bg-emerald-600 p-12 lg:p-20 shadow-2xl shadow-emerald-900/20">
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }} />
+            
+            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
+              <div className="text-center lg:text-left max-w-xl">
+                <h2 className="text-4xl lg:text-5xl font-black text-white mb-6 leading-tight">Ready to make an impact?</h2>
+                <p className="text-emerald-50 text-lg opacity-90 font-medium">
+                  Join our community of eco-warriors. Sign up today and get 
+                  personalized swap suggestions for a cleaner tomorrow.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+                <Link to="/register"
+                  className="btn btn-lg h-16 px-10 bg-white hover:bg-emerald-50 text-emerald-700 border-none font-black text-lg shadow-xl hover:scale-105 transition-all duration-300">
+                  Join for Free
+                </Link>
+                <Link to="/marketplace"
+                  className="btn btn-lg h-16 px-10 btn-outline text-white border-white/40 border-2 font-bold">
+                  Browse Store
+                </Link>
+              </div>
             </div>
           </div>
         </section>
       )}
 
-      {/* Float animation keyframe injected via a style tag */}
       <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50%       { transform: translateY(-12px) rotate(5deg); }
+          50%       { transform: translateY(-20px) rotate(8deg); }
         }
       `}</style>
     </div>
