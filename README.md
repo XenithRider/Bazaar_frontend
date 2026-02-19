@@ -1,16 +1,41 @@
-# React + Vite
+# EcoBazaar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+EcoBazaar is a sustainable e-commerce marketplace built with React and Tailwind CSS. It enables users to purchase products while tracking their carbon footprint, offers sellers a platform to manage eco-friendly goods, and provides admins with tools for certification and user management.
 
-Currently, two official plugins are available:
+## Features
+**Sustainability Tracking:** Monitor total carbon used and saved across orders.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Eco-Swap Suggestions:** Intelligent cart recommendations to switch standard products for eco-friendly alternatives.
 
-## React Compiler
+**Role-Based Access Control:** Tailored dashboards for Admin, Seller, and Customer roles.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Eco-Certification Workflow:** Sellers can request eco-labels, which Admins review and approve.
 
-## Expanding the ESLint configuration
+**Modern UI:** Fully responsive design powered by Tailwind CSS and DaisyUI components.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+
+```
+src/
+├── api/          # Axios instances and API services (auth, products, cart, etc.)
+├── components/   # Reusable UI components (StatCards, Loaders, Layout)
+├── context/      # Authentication and global state
+├── hooks/        # Custom hooks for data fetching
+├── pages/        # Route-level components (Marketplace, Dashboards, Admin)
+├── utils/        # Formatters (currency, carbon) and constants
+└── App.jsx       # Routing and guard configuration
+```
+
+## Installation & SetupClone the repository:
+```
+git clone https://github.com/xenithrider/bazaar_frontend.git
+```
+```
+cd bazaar_frontend
+```
+***Install dependencies:***
+```
+npm install
+```
+
+
