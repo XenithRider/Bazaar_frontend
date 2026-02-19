@@ -4,7 +4,7 @@ GreenMart is a sustainable e-commerce marketplace built with React and Tailwind 
 
 ## Live Demo
 ```
-https://bazaar-frontend-ruddy.vercel.app/
+https://greenmart-ruddy.vercel.app/
 ```
 
 ## Features
