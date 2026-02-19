@@ -1,6 +1,6 @@
-# EcoBazaar
+# GreenMart
 
-EcoBazaar is a sustainable e-commerce marketplace built with React and Tailwind CSS. It enables users to purchase products while tracking their carbon footprint, offers sellers a platform to manage eco-friendly goods, and provides admins with tools for certification and user management.
+GreenMart is a sustainable e-commerce marketplace built with React and Tailwind CSS. It enables users to purchase products while tracking their carbon footprint, offers sellers a platform to manage eco-friendly goods, and provides admins with tools for certification and user management.
 
 ## Live Demo
 ```
