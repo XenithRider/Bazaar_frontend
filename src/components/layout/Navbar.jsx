@@ -14,7 +14,7 @@ export default function Navbar() {
       <div className="navbar-start">
         <Link to="/" className="flex items-center gap-2 font-bold text-xl text-primary">
           <Leaf size={24} className="text-primary" />
-          <span>EcoBazaar</span>
+          <span>GreenMart</span>
         </Link>
       </div>
 
